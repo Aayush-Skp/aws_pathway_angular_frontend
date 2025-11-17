@@ -2,15 +2,12 @@
     <div class="footer-wave"></div>
     <div class="footer-content">
         <div class="footer-grid">
-            <!-- Brand Section -->
             <div class="footer-section brand-section">
                 <h2 class="brand-title">AWS Pathway</h2>
                 <p class="brand-description">
                     Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
                 </p>
             </div>
-
-            <!-- Quick Links -->
             <div class="footer-section">
                 <h3 class="section-title">Quick Links</h3>
                 <ul class="footer-links">
@@ -21,8 +18,6 @@
                     <li><a href="#" class="footer-link">Blog</a></li>
                 </ul>
             </div>
-
-            <!-- Company -->
             <div class="footer-section">
                 <h3 class="section-title">Company</h3>
                 <ul class="footer-links">
@@ -33,7 +28,6 @@
                 </ul>
             </div>
 
-            <!-- Newsletter -->
             <div class="footer-section newsletter-section">
                 <h3 class="section-title">Join the AWS Pathway Community</h3>
                 <form class="newsletter-form" (submit)="onSubmit($event)">
@@ -64,9 +58,31 @@
             </div>
         </div>
     </div>
+    <!-- <section class="hero">
+        <svg viewBox="0 0 1440 320" preserveAspectRatio="none" class="bottom-curve">
+            <path fill="#0a0a1f" d="M0,0 
+         C0,0 360,280 720,280 
+         C1080,280 1440,0 1440,0 
+         L1440,320 
+         L0,320 
+         Z">
+            </path>
+        </svg>
+    </section> -->
     <section class="hero">
-        <svg viewBox="0 0 1440 320" class="bottom-curve">
-            <path fill="#0a0a1f" d="M0,160 C360,300 1080,0 1440,160 L1440,320 L0,320 Z">
+        <svg viewBox="0 0 1440 320" preserveAspectRatio="none" class="bottom-curve">
+            <defs>
+                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#0a0a1f; stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#4a4a8f; stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <path fill="url(#gradient)" d="M0,0 
+                 C0,0 360,280 720,280 
+                 C1080,280 1440,0 1440,0 
+                 L1440,320 
+                 L0,320 
+                 Z">
             </path>
         </svg>
     </section>

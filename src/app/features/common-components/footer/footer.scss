@@ -3,7 +3,7 @@
   background: linear-gradient(180deg, #0a0a1f 0%, #1a0a2e 100%);
   color: #ffffff;
   padding-top: 120px;
-  padding-bottom: 40px;
+  // padding-bottom: 40px;
   overflow: hidden;
   font-family: 'ClashDisplay', sans-serif;
 }
@@ -278,8 +278,9 @@
 }
 
 .hero {
-  height: 20rem;
+  height: 30rem;
   position: relative;
+  overflow: hidden;
 }
 
 .bottom-curve {
