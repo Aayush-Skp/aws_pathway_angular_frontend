@@ -1,3 +1,39 @@
-<nav class="navbar-container">
+<header>
+    <div class="navbar">
+        <div class="logo">
+            <a href="#homepage_section">Aws Pathway</a>
+        </div>
+        <ul class="links">
+            <li><a href="#about_section">Home</a></li>
+            <li><a href="#skill_section">Learning Track</a></li>
+            <li><a href="#projects_section">Specialization</a></li>
+            <li><a href="#experience_section">Exam Prep</a></li>
+            <li><a href="#contact_section">Mock Exams</a></li>
+            <li><a href="#contact_section">Forums</a></li>
+            <li><a href="#contact_section">Blog</a></li>
+        </ul>
+        <a href="https://www.linkedin.com/in/krishna-panthi/" class="connect_btn" target="_blank"
+            rel="noopener noreferrer">
+            Blog
+        </a>
+        <div class="toggle_btn" (click)="toggleDropdown()">
+            <i class="Drop_down_btn"></i>
+        </div>
+    </div>
 
-</nav>
+    <div class="dropdown_menu" [class.open]="isDropdownOpen">
+        <ul>
+            <li><a href="#about_section" (click)="closeDropdown()">About</a></li>
+            <li><a href="#skill_section" (click)="closeDropdown()">Skills</a></li>
+            <li><a href="#projects_section" (click)="closeDropdown()">Projects</a></li>
+            <li><a href="#experience_section" (click)="closeDropdown()">Experience</a></li>
+            <li><a href="#contact_section" (click)="closeDropdown()">Contacts</a></li>
+            <li>
+                <a href="https://www.linkedin.com/in/krishna-panthi/" class="connect_btn" target="_blank"
+                    rel="noopener noreferrer" (click)="closeDropdown()">
+                    Blog
+                </a>
+            </li>
+        </ul>
+    </div>
+</header>
