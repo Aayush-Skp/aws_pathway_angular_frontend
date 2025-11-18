@@ -1,3 +1,106 @@
 <div class="landing-page">
+    <div class="hero-container">
+        <!-- Stars background -->
+        <div class="stars-container">
+            <div *ngFor="let star of stars" class="star" [style.width.px]="star.size" [style.height.px]="star.size"
+                [style.top.%]="star.top" [style.left.%]="star.left" [style.opacity]="star.opacity"
+                [style.animation-duration.s]="star.duration" [style.animation-delay.s]="star.delay">
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+            <!-- Heading -->
+            <div class="heading-section">
+                <h1 class="title">
+                    <span class="title-light">Master </span>
+                    <span class="title-bold">AWS</span>
+                </h1>
+                <h2 class="subtitle">Cloud Computing</h2>
+            </div>
+            <!-- Buttons -->
+            <div class="buttons-container">
+                <button class="cta-button">
+                    <span class="button-content">
+                        Start Learning Free
+                        <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </span>
+                </button>
+                <button class="cta-button">
+                    <span class="button-content">
+                        View Certifications
+                        <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
+        <!-- Bottom curve section -->
+        <div class="curve-section">
+            <!-- Just the curve line - no fill -->
+            <svg class="curve-svg" preserveAspectRatio="none" viewBox="0 0 1440 320">
+                <!-- Outer glow curve -->
+                <path d="M 0 120 Q 720 300 1440 120" fill="none" stroke="url(#curveGradient)" stroke-width="12"
+                    opacity="0.6" filter="url(#glow)" />
+                <!-- Main curve line -->
+                <path d="M 0 120 Q 720 300 1440 120" fill="none" stroke="url(#mainCurveGradient)" stroke-width="8" />
+                <defs>
+                    <linearGradient id="curveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#5a2d91" />
+                        <stop offset="20%" stop-color="#6b3aa8" />
+                        <stop offset="50%" stop-color="#8b4ec9" />
+                        <stop offset="80%" stop-color="#6b3aa8" />
+                        <stop offset="100%" stop-color="#5a2d91" />
+                    </linearGradient>
+                    <linearGradient id="mainCurveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#6b2fb5" />
+                        <stop offset="25%" stop-color="#8b4ec9" />
+                        <stop offset="50%" stop-color="#b17ef5" />
+                        <stop offset="75%" stop-color="#8b4ec9" />
+                        <stop offset="100%" stop-color="#6b2fb5" />
+                    </linearGradient>
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="8" result="coloredBlur" />
+                        <feMerge>
+                            <feMergeNode in="coloredBlur" />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+                </defs>
+            </svg>
+
+            <!-- Center glow effect -->
+            <div class="center-glow"></div>
+
+            <!-- AWS Logo in center circle -->
+            <div class="logo-container">
+                <div class="outer-glow"></div>
+                <div class="logo-circle">
+                    <div class="inner-highlight"></div>
+                    <div class="logo-svg-wrapper">
+                        <svg class="logo-svg" viewBox="0 0 120 60" fill="none">
+                            <!-- AWS text -->
+                            <text x="60" y="32" font-size="26" font-weight="600" text-anchor="middle" fill="white"
+                                font-family="Arial, sans-serif">
+                                aws
+                            </text>
+                            <!-- Smile curve -->
+                            <path d="M 25 42 Q 60 52 95 42" stroke="white" stroke-width="3.5" fill="none"
+                                stroke-linecap="round" />
+                            <!-- Arrow tip -->
+                            <path d="M 95 42 L 90 39 M 95 42 L 90 45" stroke="white" stroke-width="3.5" fill="none"
+                                stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <div class="logo-border"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>

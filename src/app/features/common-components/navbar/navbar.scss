@@ -1,6 +1,6 @@
 :host {
   --clr-primary: rgba(15, 15, 15, 1);
-  --clr-secondary: #fcfcfc;
+  --clr-secondary: rgba(255, 255, 255, 0.7);
   --clr-third: rgb(235, 235, 161);
   --clr-fourth: #1e1e1e;
   --btn-scale: 1;
@@ -8,28 +8,36 @@
 
 header {
   margin-top: 10px;
-  position: sticky;
   top: 10px;
   padding: 0 2rem;
-  z-index: 1;
+  z-index: 10;
+  background-color: transparent;
+  position: absolute;
+  width: 100%;
 }
 
 .navbar {
   width: 100%;
   height: 60px;
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   display: flex;
+  gap: 1rem;
   align-items: center;
   justify-content: space-between;
   transition: transform 0.4s ease;
 }
 
+.navbar .logo {
+  min-width: 210px;
+}
+
 .navbar .logo a {
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 1.7rem;
+  font-weight: 500;
+  min-width: 150x;
   text-decoration: none;
-  color: var(--clr-secondary);
+  color: #fcfcfc;
 }
 
 .navbar .links {
@@ -37,16 +45,17 @@ header {
   gap: 2rem;
   font-size: 16px;
   line-height: 24px;
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: none solid rgba(0, 0, 0);
   word-spacing: 0px;
   height: 48px;
-  width: 437px;
+  max-width: 1000px;
   padding: 0 16px;
   align-items: center;
   justify-content: space-around;
-  background-color: var(--clr-fourth);
+  background: linear-gradient(to bottom, #000000 0%, #472f8c 100%);
   border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.1) 0px 8px 10px -6px;
   list-style: none;
@@ -72,11 +81,12 @@ header {
   text-decoration: none solid rgba(0, 0, 0);
   word-spacing: 0px;
   height: 48px;
-  width: 165px;
+  width: 170px;
   padding: 0 16px;
   align-items: center;
   justify-content: space-around;
-  background-color: var(--clr-fourth);
+  // background-color: var(--clr-fourth);
+  background-color: transparent;
   border-radius: 20px;
   box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1), 2px 2px 4px rgba(0, 0, 0, 0.08);
 }
@@ -89,27 +99,30 @@ header {
 }
 
 .connect_btn {
-  background-color: var(--clr-third);
   width: 200px;
   height: 48px;
-  color: var(--clr-primary);
+  color: var(--clr-secondary);
   padding: 12px 28px;
   border: none;
   outline: none;
   border-radius: 20px;
   font-size: 16px;
   line-height: 24px;
-  font-weight: 600;
+  font-weight: 500;
   text-align: center;
   cursor: pointer;
   transition: scale 0.2s ease;
   text-decoration: none;
   display: inline-block;
+  background: linear-gradient(to bottom, #000000 0%, #472f8c 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.1) 0px 8px 10px -6px;
 }
 
 .connect_btn:hover {
   scale: 1.05;
-  color: #5a470c;
+  color: var(--clr-third);
 }
 
 .connect_btn:active {
@@ -131,7 +144,7 @@ header {
 }
 
 .dropdown_menu.open {
-  height: 240px;
+  height: 350px;
 }
 
 .dropdown_menu ul {
@@ -199,7 +212,7 @@ header {
 
   header {
     margin-top: 10px;
-    position: sticky;
+    position: absolute;
     top: 10px;
     padding: 0 2rem 0 0.3rem;
   }
@@ -225,9 +238,10 @@ header {
 
   header {
     margin-top: 10px;
-    position: sticky;
+    position: absolute;
     top: 10px;
     padding: 0 2rem 0 1rem;
+    background-color: transparent;
   }
 
   .dropdown_menu {
