@@ -94,7 +94,7 @@ export class AwsCertificationsSection implements OnInit {
     if (!isVisible) {
       return {
         opacity: '0',
-        transform: 'translateX(-50%) translateZ(-1000px) rotateY(0deg)',
+        transform: 'translateX(-50%) translateY(-50%) translateZ(-1000px) rotateY(0deg)',
         'z-index': '-1',
         'pointer-events': 'none',
       };
@@ -107,8 +107,10 @@ export class AwsCertificationsSection implements OnInit {
     const scale = 1 - Math.abs(position) * (isMobile ? 0.2 : 0.15);
     const opacity = 1 - Math.abs(position) * 0.3;
 
+    const transform = `translateX(calc(-50% + ${translateX}px)) translateY(-50%) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`;
+
     return {
-      transform: `translateX(calc(-50% + ${translateX}px)) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
+      transform,
       opacity: opacity.toString(),
       'z-index': (10 - Math.abs(position)).toString(),
       'pointer-events': position === 0 ? 'auto' : 'none',
