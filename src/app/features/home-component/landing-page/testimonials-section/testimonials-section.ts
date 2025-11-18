@@ -148,27 +148,28 @@ export class TestimonialsSection implements OnInit, OnDestroy, AfterViewInit {
 
     const containerWidth = containerEl.getBoundingClientRect().width;
     this.centerOffset = (containerWidth - this.cardWidth) / 2;
-    this.updateTransform(false);
+    this.updateTransform();
   }
 
-  private updateTransform(applyTransition = true): void {
+  private updateTransform(): void {
     const step = this.cardWidth + this.cardGap;
     const translate =
       step === 0 ? 0 : -this.currentIndex * step + this.centerOffset;
     this.trackTransform = `translateX(${translate}px)`;
-    this.trackTransition = applyTransition ? this.transitionValue : 'none';
   }
 
   goToSlide(index: number): void {
+    this.trackTransition = this.transitionValue;
     this.currentIndex = index + 1;
-    this.updateTransform(true);
+    this.updateTransform();
     this.restartAutoPlay();
   }
 
   nextSlide(resetTimer = false): void {
     if (!this.loopedTestimonials.length) return;
+    this.trackTransition = this.transitionValue;
     this.currentIndex += 1;
-    this.updateTransform(true);
+    this.updateTransform();
     if (resetTimer) {
       this.restartAutoPlay();
     }
@@ -176,8 +177,9 @@ export class TestimonialsSection implements OnInit, OnDestroy, AfterViewInit {
 
   prevSlide(resetTimer = false): void {
     if (!this.loopedTestimonials.length) return;
+    this.trackTransition = this.transitionValue;
     this.currentIndex -= 1;
-    this.updateTransform(true);
+    this.updateTransform();
     if (resetTimer) {
       this.restartAutoPlay();
     }
@@ -187,18 +189,21 @@ export class TestimonialsSection implements OnInit, OnDestroy, AfterViewInit {
     if (!this.loopedTestimonials.length) return;
 
     if (this.currentIndex === this.loopedTestimonials.length - 1) {
-      this.currentIndex = 1;
-      this.updateTransform(false);
-      requestAnimationFrame(() => {
-        this.trackTransition = this.transitionValue;
-      });
+      this.snapToIndex(1);
     } else if (this.currentIndex === 0) {
-      this.currentIndex = this.loopedTestimonials.length - 2;
-      this.updateTransform(false);
+      this.snapToIndex(this.loopedTestimonials.length - 2);
+    }
+  }
+
+  private snapToIndex(index: number): void {
+    this.trackTransition = 'none';
+    this.currentIndex = index;
+    this.updateTransform();
+    requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         this.trackTransition = this.transitionValue;
       });
-    }
+    });
   }
 
   private restartAutoPlay(): void {
