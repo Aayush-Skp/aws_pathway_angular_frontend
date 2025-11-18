@@ -1,0 +1,54 @@
+<div class="certifications-section">
+    <div class="certifications-container">
+        <h1 class="section-title">AWS Certifications</h1>
+
+        <div class="carousel-wrapper">
+            <button class="nav-button nav-left" (click)="handlePrev()" aria-label="Previous">
+                <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
+
+            <div class="carousel-center">
+                <div class="carousel-container" (mousedown)="onMouseDown($event)" (mousemove)="onMouseMove($event)"
+                    (mouseup)="onMouseUp()" (mouseleave)="onMouseUp()" (touchstart)="onTouchStart($event)"
+                    (touchmove)="onTouchMove($event)" (touchend)="onTouchEnd()">
+                    <div class="carousel-track">
+                        <div *ngFor="let cert of certifications; let i = index" class="certification-card"
+                            [class.active]="i === currentIndex" [ngStyle]="getCardStyle(i)">
+                            <div class="card-content">
+                                <div class="card-image">
+                                    <span class="emoji-icon">{{ cert.image }}</span>
+                                </div>
+                                <h3 class="card-title">{{ cert.title }}</h3>
+                                <p class="card-description">{{ cert.description }}</p>
+                                <button class="learn-more-btn">
+                                    <span>Learn more</span>
+                                    <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="card-blob"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="nav-button nav-right" (click)="handleNext()" aria-label="Next">
+                <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="carousel-indicators">
+            <button *ngFor="let cert of certifications; let i = index" class="indicator"
+                [class.active]="i === currentIndex" (click)="goToSlide(i)"
+                [attr.aria-label]="'Go to slide ' + (i + 1)"></button>
+        </div>
+
+        <div class="grid-background"></div>
+    </div>
+</div>

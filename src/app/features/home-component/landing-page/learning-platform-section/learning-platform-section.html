@@ -1,0 +1,101 @@
+<div class="learning-platform">
+    <div class="container">
+        <!-- Top Stats Section -->
+        <div class="stats-section">
+            <div class="stat-item" *ngFor="let stat of stats">
+                <div class="stat-value">{{ stat.value }}</div>
+                <div class="stat-label">{{ stat.label }}</div>
+            </div>
+        </div>
+
+        <!-- Title -->
+        <div class="title-section">
+            <h1 class="main-title">
+                Complete<br />Learning Platform
+            </h1>
+        </div>
+
+        <!-- Learning Path Tree -->
+        <div class="learning-tree">
+            <!-- Central Icon -->
+            <div class="central-icon">
+                <svg class="icon-svg" fill="white" viewBox="0 0 24 24">
+                    <path d="M12 2L4 7v10l8 5 8-5V7l-8-5zm0 2.18l5.5 3.45v6.74L12 17.82l-5.5-3.45V7.63L12 4.18z" />
+                    <path d="M12 8l-4 2.5v5L12 18l4-2.5v-5L12 8z" />
+                </svg>
+            </div>
+
+            <!-- Vertical Line -->
+            <div class="vertical-line"></div>
+
+            <!-- Cards Container -->
+            <div class="cards-container">
+                <!-- Top Row -->
+                <div class="cards-row top-row">
+                    <ng-container *ngFor="let path of learningPaths.slice(0, 2)">
+                        <div class="card-wrapper" [class]="path.position">
+                            <!-- Connecting Line -->
+                            <div class="connecting-line" [class]="path.position"></div>
+
+                            <div class="learning-card">
+                                <div class="card-dot top-right" *ngIf="path.position === 'top-left'"></div>
+                                <div class="card-dot bottom-left" *ngIf="path.position === 'top-left'"></div>
+                                <div class="card-dot top-left" *ngIf="path.position === 'top-right'"></div>
+                                <div class="card-dot bottom-right" *ngIf="path.position === 'top-right'"></div>
+
+                                <div class="icon-circle">
+                                    <svg *ngIf="path.icon === 'lightbulb'" class="card-icon" fill="none"
+                                        stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                    </svg>
+                                    <svg *ngIf="path.icon === 'rocket'" class="card-icon" fill="none"
+                                        stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    </svg>
+                                </div>
+
+                                <h3 class="card-title">{{ path.title }}</h3>
+                                <p class="card-description">{{ path.description }}</p>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+
+                <!-- Bottom Row -->
+                <div class="cards-row bottom-row">
+                    <ng-container *ngFor="let path of learningPaths.slice(2, 4)">
+                        <div class="card-wrapper" [class]="path.position">
+                            <!-- Connecting Line -->
+                            <div class="connecting-line" [class]="path.position"></div>
+
+                            <div class="learning-card">
+                                <div class="card-dot top-right" *ngIf="path.position === 'bottom-left'"></div>
+                                <div class="card-dot bottom-left" *ngIf="path.position === 'bottom-left'"></div>
+                                <div class="card-dot top-left" *ngIf="path.position === 'bottom-right'"></div>
+                                <div class="card-dot bottom-right" *ngIf="path.position === 'bottom-right'"></div>
+
+                                <div class="icon-circle">
+                                    <svg *ngIf="path.icon === 'trending'" class="card-icon" fill="none"
+                                        stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                                    </svg>
+                                    <svg *ngIf="path.icon === 'zap'" class="card-icon" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    </svg>
+                                </div>
+
+                                <h3 class="card-title">{{ path.title }}</h3>
+                                <p class="card-description">{{ path.description }}</p>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

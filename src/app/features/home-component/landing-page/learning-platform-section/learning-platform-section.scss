@@ -1,0 +1,349 @@
+.learning-platform {
+  min-height: 100vh;
+  //   background-color: #0a0b1e;
+  color: white;
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .learning-platform {
+    padding: 2rem;
+  }
+}
+
+.container {
+  max-width: 1536px;
+  margin: 0 auto;
+}
+
+/* Stats Section */
+.stats-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .stats-section {
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .stat-value {
+    font-size: 2.25rem;
+  }
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin-top: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .stat-label {
+    font-size: 0.875rem;
+  }
+}
+
+/* Title Section */
+.title-section {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .title-section {
+    margin-bottom: 4rem;
+  }
+}
+
+.main-title {
+  font-size: 1.875rem;
+  font-weight: 300;
+  line-height: 1.3;
+}
+
+@media (min-width: 768px) {
+  .main-title {
+    font-size: 2.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main-title {
+    font-size: 3rem;
+  }
+}
+
+/* Learning Tree */
+.learning-tree {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Central Icon */
+.central-icon {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  z-index: 10;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8b5cf6 0%, #4f46e5 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+}
+
+@media (min-width: 768px) {
+  .central-icon {
+    width: 5rem;
+    height: 5rem;
+  }
+}
+
+.icon-svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+@media (min-width: 768px) {
+  .icon-svg {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+/* Vertical Line */
+.vertical-line {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .vertical-line {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 6rem;
+    height: 10rem;
+    width: 2px;
+    background: linear-gradient(180deg, rgba(139, 92, 246, 0.5) 0%, transparent 100%);
+    transform: translateX(-50%);
+  }
+}
+
+/* Cards Container */
+.cards-container {
+  padding-top: 6rem;
+}
+
+@media (min-width: 768px) {
+  .cards-container {
+    padding-top: 8rem;
+  }
+}
+
+.cards-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .cards-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.bottom-row {
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Card Wrapper */
+.card-wrapper {
+  position: relative;
+}
+
+/* Connecting Lines */
+.connecting-line {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .connecting-line {
+    display: block;
+    position: absolute;
+    top: 50%;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(139, 92, 246, 0.3) 50%,
+      transparent 100%
+    );
+  }
+
+  .connecting-line.top-left {
+    right: 0;
+    width: 8rem;
+  }
+
+  .connecting-line.top-right {
+    left: 0;
+    width: 8rem;
+  }
+
+  .connecting-line.bottom-left {
+    right: 0;
+    width: 6rem;
+  }
+
+  .connecting-line.bottom-right {
+    left: 0;
+    width: 6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .connecting-line.top-left,
+  .connecting-line.top-right {
+    width: 10rem;
+  }
+
+  .connecting-line.bottom-left,
+  .connecting-line.bottom-right {
+    width: 8rem;
+  }
+}
+
+/* Learning Card */
+.learning-card {
+  background: linear-gradient(135deg, #1a1b3a 0%, #0f0f24 100%);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .learning-card {
+    padding: 2rem;
+  }
+}
+
+.learning-card:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+/* Card Dots */
+.card-dot {
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #a78bfa;
+  border-radius: 50%;
+}
+
+.card-dot.top-right {
+  top: 1rem;
+  right: 1rem;
+}
+
+.card-dot.bottom-left {
+  bottom: 1rem;
+  left: 1rem;
+}
+
+.card-dot.top-left {
+  top: 1rem;
+  left: 1rem;
+}
+
+.card-dot.bottom-right {
+  bottom: 1rem;
+  right: 1rem;
+}
+
+/* Icon Circle */
+.icon-circle {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8b5cf6 0%, #4f46e5 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+}
+
+@media (min-width: 768px) {
+  .icon-circle {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+}
+
+.card-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .card-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+}
+
+/* Card Content */
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .card-title {
+    font-size: 1.5rem;
+  }
+}
+
+.card-description {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  .card-description {
+    font-size: 1rem;
+  }
+}

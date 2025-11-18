@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { LearningPlatformSection } from './learning-platform-section/learning-platform-section';
+import { AwsCertificationsSection } from './aws-certifications-section/aws-certifications-section';
 
 @Component({
   selector: 'app-landing-page',
-  imports: [CommonModule],
+  imports: [CommonModule, LearningPlatformSection, AwsCertificationsSection],
   templateUrl: './landing-page.html',
   styleUrl: './landing-page.scss',
 })
