@@ -2,10 +2,18 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { LearningPlatformSection } from './learning-platform-section/learning-platform-section';
 import { AwsCertificationsSection } from './aws-certifications-section/aws-certifications-section';
+import { SpecializationSectionOne } from './specialization-section-one/specialization-section-one';
+import { SpecializationSectionTwo } from './specialization-section-two/specialization-section-two';
 
 @Component({
   selector: 'app-landing-page',
-  imports: [CommonModule, LearningPlatformSection, AwsCertificationsSection],
+  imports: [
+    CommonModule,
+    LearningPlatformSection,
+    AwsCertificationsSection,
+    SpecializationSectionOne,
+    SpecializationSectionTwo,
+  ],
   templateUrl: './landing-page.html',
   styleUrl: './landing-page.scss',
 })
