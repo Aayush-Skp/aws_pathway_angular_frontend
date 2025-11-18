@@ -1,0 +1,227 @@
+:host {
+  display: block;
+  --primary-bg: #030014;
+  --card-bg: rgba(26, 16, 63, 0.4); /* Similar to the FAQ active state but slightly less opaque */
+  --card-border: rgba(255, 255, 255, 0.1);
+  --text-main: #ffffff;
+  --text-muted: #9ca3af;
+  --input-bg: rgba(33, 22, 63, 0.6); /* Slightly darker than card for contrast */
+  --input-border: rgba(255, 255, 255, 0.15);
+  --input-placeholder: rgba(255, 255, 255, 0.3);
+  --button-bg: #8b5cf6; /* Purple-500 */
+  --button-hover-bg: #7c3aed; /* Purple-600 */
+  --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+.contact-section-container {
+  min-height: 100vh;
+  //   background-color: var(--primary-bg);
+  color: var(--text-main);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  overflow-x: hidden;
+  position: relative;
+  display: flex; /* To center content vertically if needed */
+  align-items: center; /* To center content vertically if needed */
+  padding: 2rem 0; // Add some vertical padding for smaller screens
+}
+
+.ambient-glow {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 500px;
+  background-color: rgba(88, 28, 135, 0.2); // Purple glow
+  filter: blur(120px);
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 10;
+  max-width: 72rem; /* max-w-6xl for wider layout */
+  margin: 0 auto;
+  padding: 4rem 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column; // Stack vertically on mobile
+  gap: 3rem; // Space between text and form
+  align-items: center; // Center items when stacked
+
+  @media (min-width: 1024px) {
+    // Desktop layout (lg breakpoint)
+    flex-direction: row; // Side-by-side on desktop
+    justify-content: space-between;
+    align-items: flex-start; // Align top
+    gap: 6rem; // More space for desktop
+    padding: 6rem 2rem;
+  }
+}
+
+/* Left Text Content */
+.text-content {
+  flex: 1; // Takes available space
+  max-width: 100%; // Default to full width on mobile
+  text-align: center; // Center text on mobile
+
+  @media (min-width: 768px) {
+    // Tablet
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 1024px) {
+    // Desktop
+    text-align: left;
+    max-width: 50%; // Occupy roughly half the space
+    padding-right: 2rem; // Little spacing from the form
+  }
+}
+
+.main-heading {
+  font-size: 2.5rem; /* ~40px */
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.5rem;
+
+  @media (min-width: 768px) {
+    font-size: 3.5rem; /* ~56px */
+    line-height: 1.1;
+  }
+}
+
+.sub-text {
+  font-size: 1.125rem; /* ~18px */
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 1rem; /* Space between paragraphs */
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 1.25rem; /* ~20px */
+  }
+}
+
+/* Right Form Card */
+.form-card {
+  flex: 1;
+  width: 100%; // Take full width on mobile
+  max-width: 28rem; // Max width for the card itself on larger screens
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 10px 30px var(--shadow-color);
+
+  @media (min-width: 768px) {
+    padding: 2.5rem 3rem;
+    max-width: 32rem; // Slightly wider on tablets
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 36rem; // Max width for desktop
+  }
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card-description {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-section-title {
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem; // Space after title
+  color: var(--text-main);
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.text-input,
+.textarea-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--input-border);
+  background-color: var(--input-bg);
+  color: var(--text-main);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+  &::placeholder {
+    color: var(--input-placeholder);
+  }
+
+  &:focus {
+    border-color: var(--button-bg); // Purple focus
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.3);
+  }
+}
+
+.textarea-input {
+  resize: vertical; // Allow vertical resizing
+  min-height: 8rem; // Minimum height for message box
+  padding-top: 1rem; // Adjust padding for textarea
+}
+
+.submit-button {
+  background-color: var(--button-bg);
+  color: var(--text-main);
+  padding: 0.9rem 1.5rem;
+  border-radius: 0.6rem;
+  border: none;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  align-self: flex-end; // Align button to the right
+
+  &:hover {
+    background-color: var(--button-hover-bg);
+    transform: translateY(-2px); // Subtle lift effect
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    background-color: #5b21b6; // Darker purple when disabled
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+}

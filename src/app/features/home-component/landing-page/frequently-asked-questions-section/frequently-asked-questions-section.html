@@ -1,0 +1,60 @@
+<div class="page-container">
+
+    <!-- Background ambient glow -->
+    <div class="ambient-glow"></div>
+
+    <div class="content-wrapper">
+
+        <!-- Header -->
+        <header class="header">
+            <h1 class="title-primary">Frequently Asked</h1>
+            <div class="title-secondary">Questions</div>
+        </header>
+
+        <!-- FAQ List -->
+        <div class="faq-list">
+            @for (item of faqItems; track $index) {
+            <div class="faq-item" [class.active]="isOpen($index)">
+
+                <!-- Clickable Header -->
+                <button (click)="toggle($index)" class="faq-button" [attr.aria-expanded]="isOpen($index)">
+                    <span class="question-text">{{ item.question }}</span>
+
+                    <!-- Animated Icon Wrapper -->
+                    <div class="icon-container" [class.rotate]="isOpen($index)">
+                        <!-- Plus/Star Icon -->
+                        @if (!isOpen($index)) {
+                        <svg class="icon-svg star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" />
+                        </svg>
+                        }
+
+                        <!-- Close/X Icon -->
+                        @if (isOpen($index)) {
+                        <svg class="icon-svg close-icon" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        }
+                    </div>
+                </button>
+
+                <!-- Expandable Content -->
+                <div class="faq-answer-wrapper" [class.expanded]="isOpen($index)">
+                    <div class="faq-inner-content">
+                        <div class="answer-text">{{ item.answer }}</div>
+                    </div>
+                </div>
+
+                <!-- Active State Glow -->
+                <div class="inner-glow" [class.visible]="isOpen($index)">
+                    <div class="glow-blob purple"></div>
+                    <div class="glow-blob blue"></div>
+                </div>
+
+            </div>
+            }
+        </div>
+    </div>
+</div>

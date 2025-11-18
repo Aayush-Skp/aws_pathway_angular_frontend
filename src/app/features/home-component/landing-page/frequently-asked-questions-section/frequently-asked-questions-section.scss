@@ -1,0 +1,231 @@
+:host {
+  display: block;
+  --primary-bg: #030014;
+  --card-bg-closed: #0a061e;
+  --card-border-closed: rgba(255, 255, 255, 0.1);
+  --card-border-open: #8b5cf6;
+  --text-main: #ffffff;
+  --text-muted: #9ca3af;
+  --transition-speed: 0.5s;
+}
+
+.page-container {
+  min-height: 100vh;
+  //   background-color: var(--primary-bg);
+  color: var(--text-main);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.ambient-glow {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 500px;
+  background-color: rgba(88, 28, 135, 0.2);
+  filter: blur(120px);
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 10;
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  @media (min-width: 768px) {
+    margin-bottom: 4rem;
+  }
+}
+
+.title-primary {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+
+  @media (min-width: 768px) {
+    font-size: 3rem;
+    line-height: 1;
+  }
+}
+
+.title-secondary {
+  @extend .title-primary;
+  color: rgba(107, 114, 128, 0.8);
+}
+
+.faq-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @media (min-width: 768px) {
+    gap: 1.5rem;
+  }
+}
+
+.faq-item {
+  position: relative;
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid var(--card-border-closed);
+  background-color: var(--card-bg-closed);
+  transition: all var(--transition-speed) ease-out;
+  overflow: hidden;
+
+  &.active {
+    border-color: var(--card-border-open);
+    background: linear-gradient(135deg, #1a103f 0%, #0f0a2a 100%);
+    box-shadow: 0 0 30px -10px rgba(139, 92, 246, 0.3);
+  }
+}
+
+.faq-button {
+  width: 100%;
+  text-align: left;
+  padding: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  position: relative;
+  z-index: 20;
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+
+  @media (min-width: 768px) {
+    padding: 1.75rem 2rem;
+  }
+}
+
+.question-text {
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.625;
+  padding-right: 2rem;
+
+  @media (min-width: 768px) {
+    font-size: 1.25rem;
+  }
+}
+
+.icon-container {
+  flex-shrink: 0;
+  position: relative;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: 0.25rem;
+  transition: transform var(--transition-speed);
+
+  &.rotate {
+    transform: rotate(90deg);
+  }
+}
+
+.icon-svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  animation: fadeZoomIn 0.3s ease-out forwards;
+}
+
+.star-icon {
+  color: white;
+}
+.close-icon {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+@keyframes fadeZoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.faq-answer-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--transition-speed) ease-in-out;
+
+  &.expanded {
+    grid-template-rows: 1fr;
+  }
+}
+
+.faq-inner-content {
+  overflow: hidden;
+}
+
+.answer-text {
+  padding: 0 1.5rem 2rem 1.5rem;
+  color: var(--text-muted);
+  line-height: 1.625;
+  font-size: 1rem;
+  position: relative;
+  z-index: 10;
+
+  @media (min-width: 768px) {
+    padding: 0 2rem 2rem 2rem;
+    font-size: 1.125rem;
+  }
+}
+
+.inner-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-speed);
+
+  &.visible {
+    opacity: 1;
+  }
+}
+
+.glow-blob {
+  position: absolute;
+  width: 16rem;
+  height: 16rem;
+  filter: blur(60px);
+  border-radius: 9999px;
+
+  &.purple {
+    right: -5rem;
+    top: -5rem;
+    background-color: rgba(147, 51, 234, 0.2);
+  }
+  &.blue {
+    left: -5rem;
+    bottom: -5rem;
+    background-color: rgba(37, 99, 235, 0.1);
+  }
+}

@@ -1,0 +1,60 @@
+<div class="contact-section-container">
+    <!-- Background ambient glow effect -->
+    <div class="ambient-glow"></div>
+
+    <div class="content-wrapper">
+        <!-- Left Section: Text Content -->
+        <div class="text-content">
+            <h2 class="main-heading">We are here to help!</h2>
+            <p class="sub-text">
+                Have a a question about our courses, enrolments, or training
+                programs?
+            </p>
+            <p class="sub-text">
+                Our team is here to support you every step of the way.
+                Whether you're a new student, educator, or partner, we're
+                happy to help.
+            </p>
+        </div>
+
+        <!-- Right Section: Contact Form Card -->
+        <div class="form-card">
+            <div class="card-header">
+                <h3 class="card-title">Contact us</h3>
+                <p class="card-description">
+                    Contact us for a quote, help or to join the team
+                </p>
+            </div>
+
+            <form class="contact-form" (ngSubmit)="submitForm()">
+                <h4 class="form-section-title">Get in touch</h4>
+
+                <!-- Name Input -->
+                <div class="input-group">
+                    <label for="name" class="input-label">Name</label>
+                    <input type="text" id="name" name="name" class="text-input" placeholder="Your Name"
+                        [ngModel]="formData().name" (ngModelChange)="updateFormData('name', $event)" required />
+                </div>
+
+                <!-- Email Input -->
+                <div class="input-group">
+                    <label for="email" class="input-label">Email</label>
+                    <input type="email" id="email" name="email" class="text-input" placeholder="Your Email"
+                        [ngModel]="formData().email" (ngModelChange)="updateFormData('email', $event)" required />
+                </div>
+
+                <!-- Message Textarea -->
+                <div class="input-group">
+                    <label for="message" class="input-label">Message</label>
+                    <textarea id="message" name="message" class="textarea-input" placeholder="Write the message..."
+                        [ngModel]="formData().message" (ngModelChange)="updateFormData('message', $event)" rows="5"
+                        required>
+                    </textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-button">Send a Message</button>
+            </form>
+        </div>
+    </div>
+</div>

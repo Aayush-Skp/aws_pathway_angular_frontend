@@ -6,6 +6,9 @@ import { SpecializationSectionOne } from './specialization-section-one/specializ
 import { SpecializationSectionTwo } from './specialization-section-two/specialization-section-two';
 import { MockExamsSection } from './mock-exams-section/mock-exams-section';
 import { TestimonialsSection } from './testimonials-section/testimonials-section';
+import { FrequentlyAskedQuestionsSection } from './frequently-asked-questions-section/frequently-asked-questions-section';
+import { ContactUsSection } from './contact-us-section/contact-us-section';
+import { Footer } from '../../common-components/footer/footer';
 
 @Component({
   selector: 'app-landing-page',
@@ -17,6 +20,9 @@ import { TestimonialsSection } from './testimonials-section/testimonials-section
     SpecializationSectionTwo,
     MockExamsSection,
     TestimonialsSection,
+    FrequentlyAskedQuestionsSection,
+    ContactUsSection,
+    Footer,
   ],
   templateUrl: './landing-page.html',
   styleUrl: './landing-page.scss',
