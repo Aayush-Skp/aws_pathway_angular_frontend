@@ -1,0 +1,60 @@
+<div #heroSection class="mock-exams-container">
+    <div class="content-wrapper">
+        <!-- Hero Section -->
+        <div class="hero-grid">
+            <!-- Left Content -->
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Mock Exams<br />
+                    Hand-made<br />
+                    For You
+                </h1>
+                <p class="hero-subtitle">
+                    Prepare for mock test here.
+                </p>
+                <button class="cta-button" (click)="getStarted()">
+                    <span>Get Started</span>
+                    <span class="arrow">→</span>
+                </button>
+            </div>
+
+            <!-- Right Floating Cards -->
+            <div class="floating-cards">
+                <div *ngFor="let stat of stats; let i = index" class="stat-card" [class.card-1]="i === 0"
+                    [class.card-2]="i === 1" [class.card-3]="i === 2" [class.visible]="isVisible"
+                    [attr.data-delay]="stat.delay">
+                    <div class="stat-icon">{{ stat.icon }}</div>
+                    <div class="stat-info">
+                        <div class="stat-value">{{ stat.value }}</div>
+                        <div class="stat-label">{{ stat.label }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Programs Section -->
+        <div class="programs-section">
+            <div class="programs-grid">
+                <!-- Programs Text -->
+                <div class="programs-intro">
+                    <h2 class="programs-title">Programs</h2>
+                    <p class="programs-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+                    </p>
+                </div>
+
+                <!-- Feature Cards -->
+                <div class="features-grid">
+                    <div *ngFor="let feature of features" class="feature-card">
+                        <div class="feature-icon">{{ feature.icon }}</div>
+                        <h3 class="feature-title">{{ feature.title }}</h3>
+                        <a href="#" class="feature-link">
+                            {{ feature.description }}
+                            <span class="link-arrow">›</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

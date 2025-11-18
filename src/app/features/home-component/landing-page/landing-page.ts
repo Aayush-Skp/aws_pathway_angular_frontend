@@ -4,6 +4,8 @@ import { LearningPlatformSection } from './learning-platform-section/learning-pl
 import { AwsCertificationsSection } from './aws-certifications-section/aws-certifications-section';
 import { SpecializationSectionOne } from './specialization-section-one/specialization-section-one';
 import { SpecializationSectionTwo } from './specialization-section-two/specialization-section-two';
+import { MockExamsSection } from './mock-exams-section/mock-exams-section';
+import { TestimonialsSection } from './testimonials-section/testimonials-section';
 
 @Component({
   selector: 'app-landing-page',
@@ -13,6 +15,8 @@ import { SpecializationSectionTwo } from './specialization-section-two/specializ
     AwsCertificationsSection,
     SpecializationSectionOne,
     SpecializationSectionTwo,
+    MockExamsSection,
+    TestimonialsSection,
   ],
   templateUrl: './landing-page.html',
   styleUrl: './landing-page.scss',

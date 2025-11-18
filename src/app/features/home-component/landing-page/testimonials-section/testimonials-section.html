@@ -1,0 +1,73 @@
+<div class="testimonials-section">
+    <!-- World Map Background -->
+    <div class="world-map-background">
+        <svg viewBox="0 0 1200 600" class="world-map">
+            <!-- Simplified world map paths -->
+            <g opacity="0.1" stroke="#8b5cf6" fill="none" stroke-width="1">
+                <!-- North America -->
+                <path d="M150,150 L200,120 L280,130 L300,180 L280,220 L240,240 L200,230 L180,200 Z" />
+                <!-- South America -->
+                <path d="M240,280 L280,260 L300,280 L310,340 L280,380 L260,360 L250,320 Z" />
+                <!-- Europe -->
+                <path d="M480,140 L520,130 L560,140 L580,160 L560,180 L520,170 Z" />
+                <!-- Africa -->
+                <path d="M500,200 L540,190 L580,210 L590,260 L570,300 L540,310 L510,290 L500,240 Z" />
+                <!-- Asia -->
+                <path d="M620,120 L720,110 L800,130 L850,160 L820,200 L760,210 L700,190 L660,170 Z" />
+                <!-- Australia -->
+                <path d="M820,320 L880,310 L900,340 L890,370 L850,360 Z" />
+
+                <!-- Connection lines -->
+                <line x1="300" y1="180" x2="480" y2="140" stroke-dasharray="5,5" />
+                <line x1="560" y1="160" x2="620" y2="140" stroke-dasharray="5,5" />
+                <line x1="540" y1="250" x2="700" y2="180" stroke-dasharray="5,5" />
+
+                <!-- Location markers -->
+                <circle cx="280" cy="180" r="3" fill="#8b5cf6" opacity="0.6" />
+                <circle cx="520" cy="150" r="3" fill="#8b5cf6" opacity="0.6" />
+                <circle cx="720" cy="140" r="3" fill="#8b5cf6" opacity="0.6" />
+                <circle cx="550" cy="250" r="3" fill="#8b5cf6" opacity="0.6" />
+                <circle cx="860" cy="340" r="3" fill="#8b5cf6" opacity="0.6" />
+                <circle cx="270" cy="320" r="3" fill="#8b5cf6" opacity="0.6" />
+            </g>
+        </svg>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h2 class="title">
+                Don't Trust Us, Trust<br />
+                <span class="title-accent">Their Voice</span>
+            </h2>
+        </div>
+
+        <!-- Carousel -->
+        <div class="carousel-container" #carouselContainer>
+            <div class="carousel-track" #carouselTrack [style.transform]="trackTransform"
+                [style.transition]="trackTransition" (transitionend)="handleTransitionEnd()"
+                (touchstart)="onTouchStart($event)" (touchmove)="onTouchMove($event)" (touchend)="onTouchEnd()">
+
+                <div *ngFor="let testimonial of loopedTestimonials; let i = index" class="testimonial-card"
+                    [class.active]="i === currentIndex">
+                    <div class="card-content">
+                        <h3 class="card-title">{{ testimonial.title }}</h3>
+                        <p class="card-text">{{ testimonial.content }}</p>
+                        <div class="card-author">
+                            <span class="author-name">{{ testimonial.author }}</span>,
+                            <span class="author-position">{{ testimonial.position }}</span> at
+                            <span class="author-company">{{ testimonial.company }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Dots -->
+        <div class="carousel-dots">
+            <button *ngFor="let dot of getDots(); let i = index" class="dot" [class.active]="i === activeDot"
+                (click)="goToSlide(i)" [attr.aria-label]="'Go to slide ' + (i + 1)">
+            </button>
+        </div>
+    </div>
+</div>
