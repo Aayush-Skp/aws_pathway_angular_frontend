@@ -1,21 +1,23 @@
 .learning-track-container {
   display: flex;
   height: calc(100vh - 70px); // Adjust based on navbar height
-  background-color: #4c1b99;
+  background-color: #0f0d1e;
   margin-top: 100px;
+  //   justify-content: flex-start;
 
   // Sidebar Styles
   .sidebar {
     width: 320px;
-    background-color: #ffffff;
-    border-right: 1px solid #e1e4e8;
+    background-color: #0f0d1e;
+    border-right: 1px solid #1d2637;
     overflow-y: auto;
+    border-top-right-radius: 1rem;
     flex-shrink: 0;
 
     .sidebar-header {
       padding: 1.5rem;
       border-bottom: 1px solid #e1e4e8;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #1d2637 0%, #0f0d1e 100%);
       color: white;
 
       h2 {
@@ -149,7 +151,10 @@
   .content-area {
     flex: 1;
     overflow-y: auto;
-    background-color: #551779;
+    background-color: #0f0d1e;
+    color: white;
+    display: flex;
+    justify-content: flex-start;
 
     .welcome-screen {
       display: flex;
@@ -217,7 +222,7 @@
     .topic-content {
       padding: 2rem 3rem;
       max-width: 900px;
-      margin: 0 auto;
+      margin: 0 0.5rem;
 
       .content-wrapper {
         h2 {
