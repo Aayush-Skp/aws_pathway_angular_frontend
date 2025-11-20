@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   standalone: true,
@@ -10,6 +11,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './navbar.scss',
 })
 export class Navbar {
+  private authService = inject(AuthService);
   isDropdownOpen = false;
 
   toggleDropdown(): void {
@@ -18,5 +20,9 @@ export class Navbar {
 
   closeDropdown(): void {
     this.isDropdownOpen = false;
+  }
+
+  loginViaGoogle(): void {
+    this.authService.loginWithGoogle();
   }
 }

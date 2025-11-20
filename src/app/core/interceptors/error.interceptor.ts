@@ -10,11 +10,10 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
     catchError((error) => {
       if (error.status === 401) {
         localStorage.removeItem('authToken');
-        router.navigate(['/login']);
+        router.navigate(['/home']);
       } else if (error.status === 403) {
-        router.navigate(['/unauthorized']);
+        router.navigate(['/home']);
       }
-
       return throwError(() => error);
     })
   );
