@@ -1,16 +1,17 @@
 <header>
     <div class="navbar">
         <div class="logo">
-            <a href="#homepage_section">AWS Pathway</a>
+            <a routerLink="/home">AWS Pathway</a>
         </div>
         <ul class="links">
-            <li><a href="#about_section">Home</a></li>
-            <li><a href="#skill_section">Learning Track</a></li>
-            <li><a href="#projects_section">Specialization</a></li>
-            <li><a href="#experience_section">Exam Prep</a></li>
-            <li><a href="#contact_section">Mock Exams</a></li>
-            <li><a href="#contact_section">Forums</a></li>
-            <li><a href="#contact_section">Blog</a></li>
+            <li><a routerLink="/home">Home</a></li>
+            <li><a routerLink="/learning-track">Learning Track</a></li>
+            <li><a routerLink="/specialization">Specialization</a></li>
+
+            <li><a routerLink="/awscertification">AWS Certification</a></li>
+            <li><a routerLink="/mock-exams">Challenges</a></li>
+            <li><a routerLink="/forums">Forums</a></li>
+            <li><a routerLink="/blog">Blog</a></li>
         </ul>
         <a href="" class="connect_btn" target="_blank" rel="noopener noreferrer" (click)="loginViaGoogle()">
             Login
@@ -22,13 +23,13 @@
 
     <div class="dropdown_menu" [class.open]="isDropdownOpen">
         <ul>
-            <li><a href="#about_section" (click)="closeDropdown()">Home</a></li>
-            <li><a href="#skill_section" (click)="closeDropdown()">Leraning Track</a></li>
-            <li><a href="#projects_section" (click)="closeDropdown()">Specialization</a></li>
-            <li><a href="#experience_section" (click)="closeDropdown()">Exam Perp</a></li>
-            <li><a href="#contact_section" (click)="closeDropdown()">Mock Exams</a></li>
-            <li><a href="#contact_section" (click)="closeDropdown()">Forums</a></li>
-            <li><a href="#contact_section" (click)="closeDropdown()">Blog</a></li>
+            <li><a routerLink="/home" (click)="closeDropdown()">Home</a></li>
+            <li><a routerLink="/learning-track" (click)="closeDropdown()">Learning Track</a></li>
+            <li><a routerLink="/specialization" (click)="closeDropdown()">Specialization</a></li>
+            <li><a routerLink="/awscertification" (click)="closeDropdown()">AWS Cetification</a></li>
+            <li><a routerLink="/mock-exams">Challenges</a></li>
+            <li><a routerLink="/forums" (click)="closeDropdown()">Forums</a></li>
+            <li><a routerLink="/blog" (click)="closeDropdown()">Blog</a></li>
             <li>
                 <a href="" class="connect_btn" target="_blank" rel="noopener noreferrer" (click)="closeDropdown()">
                     Login
