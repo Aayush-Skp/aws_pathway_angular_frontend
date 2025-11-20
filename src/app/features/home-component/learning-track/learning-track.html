@@ -1,1 +1,72 @@
-<p>learning-track work sdfsdf sdsvsdvsd!</p>
+<div class="learning-track-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>Learning Track</h2>
+            <p class="subtitle">AWS Pathway</p>
+        </div>
+
+        <nav class="navigation">
+            <!-- Category Level -->
+            <div *ngFor="let category of categories" class="category-section">
+                <div class="category-header" (click)="toggleCategory(category)" [class.active]="category.isExpanded">
+                    <span class="expand-icon">{{ category.isExpanded ? '▼' : '▶' }}</span>
+                    <span class="category-name">{{ category.name }}</span>
+                </div>
+
+                <!-- Chapter Level -->
+                <div class="chapters" *ngIf="category.isExpanded">
+                    <div *ngFor="let chapter of category.chapters" class="chapter-section">
+                        <div class="chapter-header" (click)="toggleChapter(chapter)"
+                            [class.active]="chapter.isExpanded">
+                            <span class="expand-icon">{{ chapter.isExpanded ? '▼' : '▶' }}</span>
+                            <span class="chapter-name">{{ chapter.name }}</span>
+                        </div>
+
+                        <!-- Topic Level -->
+                        <div class="topics" *ngIf="chapter.isExpanded">
+                            <div *ngFor="let topic of chapter.topics" class="topic-item" (click)="selectTopic(topic)"
+                                [class.selected]="isTopicSelected(topic)">
+                                <span class="topic-dot">•</span>
+                                <span class="topic-name">{{ topic.name }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Content Area -->
+    <main class="content-area">
+        <div *ngIf="!selectedTopic" class="welcome-screen">
+            <div class="welcome-content">
+                <h1>Welcome to AWS Learning Track</h1>
+                <p>Select a topic from the sidebar to begin your learning journey</p>
+                <div class="features">
+                    <div class="feature-card">
+                        <span class="feature-icon">📚</span>
+                        <h3>Structured Learning</h3>
+                        <p>Progress from beginner to advanced levels</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🎯</span>
+                        <h3>Hands-on Practice</h3>
+                        <p>Real-world examples and exercises</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🚀</span>
+                        <h3>Career Ready</h3>
+                        <p>Prepare for AWS certification exams</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="selectedTopic" class="topic-content">
+            <div class="content-wrapper">
+                <div [innerHTML]="selectedTopic.content"></div>
+            </div>
+        </div>
+    </main>
+</div>
