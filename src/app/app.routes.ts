@@ -11,11 +11,6 @@ import { Blog } from './features/home-component/blog/blog';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
-  },
-  {
-    path: 'home',
     component: HomeComponent,
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
