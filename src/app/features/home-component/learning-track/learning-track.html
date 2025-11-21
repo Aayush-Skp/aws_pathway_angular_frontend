@@ -8,7 +8,7 @@
 
         <nav class="navigation">
             <!-- Category Level -->
-            <div *ngFor="let category of categories; trackBy: trackByPath" class="category-section">
+            <div *ngFor="let category of categories(); trackBy: trackByPath" class="category-section">
                 <div class="category-header" (click)="toggleItem(category, 'category')"
                     [class.active]="category.isExpanded">
                     <span class="expand-icon" *ngIf="!category.isLoading">

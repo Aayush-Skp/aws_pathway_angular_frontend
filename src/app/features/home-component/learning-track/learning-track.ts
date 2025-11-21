@@ -2,16 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { environment } from '../../../../environments/environment';
-
-interface DirectoryItem {
-  name: string;
-  path: string;
-  is_directory: boolean;
-  isExpanded?: boolean;
-  children?: DirectoryItem[];
-  isLoading?: boolean;
-  content?: string;
-}
+import { CategoryService, DirectoryItem } from '../services/category.service';
 
 @Component({
   selector: 'app-learning-track',
@@ -23,34 +14,37 @@ export class LearningTrack implements OnInit {
   private http = inject(HttpClient);
   private baseUrl = environment.apiUrl || 'http://127.0.0.1:8000';
 
-  categories: DirectoryItem[] = [];
+  private categoryService = inject(CategoryService);
+  // categories: DirectoryItem[] = [];
+  categories = this.categoryService.categories;
+
   selectedFile: DirectoryItem | null = null;
   fileContent: string = '';
   isLoadingContent: boolean = false;
 
   ngOnInit(): void {
-    this.loadCategories();
+    this.categoryService.loadCategories();
   }
 
-  loadCategories(): void {
-    const url = `${this.baseUrl}/v1/directory/learning-tracks`;
+  // loadCategories(): void {
+  //   const url = `${this.baseUrl}/v1/directory/learning-tracks`;
 
-    this.http.get<DirectoryItem[]>(url).subscribe({
-      next: (data) => {
-        this.categories = data
-          .filter((item) => item.is_directory)
-          .map((item) => ({
-            ...item,
-            isExpanded: false,
-            children: [],
-            isLoading: false,
-          }));
-      },
-      error: (error) => {
-        console.error('Error loading categories:', error);
-      },
-    });
-  }
+  //   this.http.get<DirectoryItem[]>(url).subscribe({
+  //     next: (data) => {
+  //       this.categories = data
+  //         .filter((item) => item.is_directory)
+  //         .map((item) => ({
+  //           ...item,
+  //           isExpanded: false,
+  //           children: [],
+  //           isLoading: false,
+  //         }));
+  //     },
+  //     error: (error) => {
+  //       console.error('Error loading categories:', error);
+  //     },
+  //   });
+  // }
 
   toggleItem(item: DirectoryItem, level: 'category' | 'chapter' | 'topic'): void {
     if (!item.is_directory) {

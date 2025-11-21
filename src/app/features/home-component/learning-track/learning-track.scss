@@ -1,6 +1,6 @@
 .learning-track-container {
   display: flex;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 100px);
   background-color: #0f0d1e;
   margin-top: 100px;
 
@@ -178,7 +178,6 @@
     }
   }
 
-  // Content Area Styles
   .content-area {
     flex: 1;
     overflow-y: auto;
@@ -189,7 +188,7 @@
 
     .welcome-screen {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
       height: 100%;
       padding: 2rem;
