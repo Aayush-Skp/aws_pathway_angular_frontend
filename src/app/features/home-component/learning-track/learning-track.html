@@ -8,28 +8,32 @@
 
         <nav class="navigation">
             <!-- Category Level -->
-            <div *ngFor="let category of categories" class="category-section">
-                <div class="category-header" (click)="toggleCategory(category)" [class.active]="category.isExpanded">
-                    <span class="expand-icon">{{ category.isExpanded ? '▼' : '▶' }}</span>
-                    <span class="category-name">{{ category.name }}</span>
+            <div *ngFor="let category of categories; trackBy: trackByPath" class="category-section">
+                <div class="category-header" (click)="toggleItem(category, 'category')"
+                    [class.active]="category.isExpanded">
+                    <span class="expand-icon" *ngIf="!category.isLoading">
+                        {{ category.isExpanded ? '▼' : '▶' }}
+                    </span>
+                    <span class="loading-spinner" *ngIf="category.isLoading">⟳</span>
+                    <span class="category-name">{{ getItemName(category) }}</span>
                 </div>
 
                 <!-- Chapter Level -->
-                <div class="chapters" *ngIf="category.isExpanded">
-                    <div *ngFor="let chapter of category.chapters" class="chapter-section">
-                        <div class="chapter-header" (click)="toggleChapter(chapter)"
+                <div class="chapters" *ngIf="category.isExpanded && category.children">
+                    <div *ngFor="let chapter of category.children; trackBy: trackByPath" class="chapter-section">
+                        <div class="chapter-header" (click)="toggleItem(chapter, 'chapter')"
                             [class.active]="chapter.isExpanded">
-                            <span class="expand-icon">{{ chapter.isExpanded ? '▼' : '▶' }}</span>
-                            <span class="chapter-name">{{ chapter.name }}</span>
+                            <span class="expand-icon" *ngIf="!chapter.isLoading">
+                                {{ chapter.isExpanded ? '▼' : '▶' }}
+                            </span>
+                            <span class="loading-spinner" *ngIf="chapter.isLoading">⟳</span>
+                            <span class="chapter-name">{{ getItemName(chapter) }}</span>
                         </div>
 
-                        <!-- Topic Level -->
-                        <div class="topics" *ngIf="chapter.isExpanded">
-                            <div *ngFor="let topic of chapter.topics" class="topic-item" (click)="selectTopic(topic)"
-                                [class.selected]="isTopicSelected(topic)">
-                                <span class="topic-dot">•</span>
-                                <span class="topic-name">{{ topic.name }}</span>
-                            </div>
+                        <!-- Topic/Subtopic Level (Recursive) -->
+                        <div class="topics" *ngIf="chapter.isExpanded && chapter.children">
+                            <ng-container *ngTemplateOutlet="topicTree; context: { items: chapter.children, depth: 1 }">
+                            </ng-container>
                         </div>
                     </div>
                 </div>
@@ -39,7 +43,7 @@
 
     <!-- Content Area -->
     <main class="content-area">
-        <div *ngIf="!selectedTopic" class="welcome-screen">
+        <div *ngIf="!selectedFile && !isLoadingContent" class="welcome-screen">
             <div class="welcome-content">
                 <h1>Welcome to AWS Learning Track</h1>
                 <p>Select a topic from the sidebar to begin your learning journey</p>
@@ -63,10 +67,38 @@
             </div>
         </div>
 
-        <div *ngIf="selectedTopic" class="topic-content">
-            <div class="content-wrapper">
-                <div [innerHTML]="selectedTopic.content"></div>
+        <div *ngIf="isLoadingContent" class="loading-screen">
+            <div class="loader"></div>
+            <p>Loading content...</p>
+        </div>
+
+        <div *ngIf="selectedFile && !isLoadingContent" class="topic-content">
+            <div class="content-header">
+                <h1>{{ getItemName(selectedFile) }}</h1>
+                <p class="breadcrumb">{{ selectedFile.path }}</p>
             </div>
+            <div class="content-wrapper" [innerHTML]="fileContent"></div>
         </div>
     </main>
 </div>
+
+<!-- Recursive Template for nested topics -->
+<ng-template #topicTree let-items="items" let-depth="depth">
+    <div *ngFor="let item of items; trackBy: trackByPath" class="topic-item" [class.selected]="isFileSelected(item)"
+        [style.padding-left.rem]="2 + depth">
+        <div class="topic-content-wrapper" (click)="toggleItem(item, 'topic')">
+            <span class="expand-icon" *ngIf="item.is_directory && !item.isLoading">
+                {{ item.isExpanded ? '▼' : '▶' }}
+            </span>
+            <span class="loading-spinner" *ngIf="item.isLoading">⟳</span>
+            <span class="topic-dot" *ngIf="!item.is_directory">•</span>
+            <span class="topic-name">{{ getItemName(item) }}</span>
+        </div>
+
+        <!-- Recursive call for nested items -->
+        <div *ngIf="item.isExpanded && item.children && item.children.length > 0">
+            <ng-container *ngTemplateOutlet="topicTree; context: { items: item.children, depth: depth + 1 }">
+            </ng-container>
+        </div>
+    </div>
+</ng-template>
