@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { CategoryService, DirectoryItem } from '../services/category.service';
 
@@ -9,6 +9,7 @@ import { CategoryService, DirectoryItem } from '../services/category.service';
   imports: [CommonModule],
   templateUrl: './learning-track.html',
   styleUrl: './learning-track.scss',
+  encapsulation: ViewEncapsulation.None,
 })
 export class LearningTrack implements OnInit {
   private http = inject(HttpClient);
